@@ -5,6 +5,7 @@ namespace ZooKeeper
     {
         public UI()
         {
+            Console.WriteLine("This is a test");
         }
     }
 }
