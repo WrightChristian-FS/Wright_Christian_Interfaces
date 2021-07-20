@@ -15,5 +15,22 @@ namespace ZooKeeper
         public Animals() 
         {
         }
+
+        public static void Eat()
+        {
+
+        }
+
+        public static void MakeNoise()
+        {
+
+        }
+
+        public static void Poop()
+        {
+
+        }
+
+
     }
 }

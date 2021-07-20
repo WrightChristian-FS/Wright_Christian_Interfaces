@@ -1,9 +1,9 @@
 ﻿using System;
 namespace ZooKeeper
 {
-    public class Chimpanzee
+    public class Chimpanzee : Animals
     {
-        public Chimpanzee()
+        public Chimpanzee() 
         {
         }
     }

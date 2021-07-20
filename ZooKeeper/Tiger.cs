@@ -1,7 +1,7 @@
 ﻿using System;
 namespace ZooKeeper
 {
-    public class Tiger
+    public class Tiger : Animals
     {
         public Tiger()
         {
