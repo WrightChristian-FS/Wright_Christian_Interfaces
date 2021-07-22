@@ -6,24 +6,40 @@ namespace ZooKeeper
 
         //Fields
         private int _foodConsumed;
-        private string _treat; 
+        private string _treat;
+
+        protected static int FoodConsumed { get; set; }
 
         public string Species { get; set; }
-        public int FoodConsumed { get; set; }
+        public string Treat { get; set; }
+        
 
 
         public Animals(string species, string treat) 
         {
             Species = species;
-            _treat = treat; 
+            _treat = treat;
+
+           
+            
         }
 
-        public static void Eat()
+        public static void Eat(Animals animal)
         {
-            //If animal eats more than for time trigger Poop()
 
-            //It should return a string describing how the animal ate the
-            //food that looks like this: "The dolphin ate a herring”
+            //This method will feed the animals 
+
+            if (animal._foodConsumed > 3)
+            {
+                Poop(animal);
+                animal._foodConsumed = 0; 
+            } else
+            {
+                Console.WriteLine($"\r\nThe {animal.Species} ate a {animal._treat}");
+                animal._foodConsumed += 1; 
+
+            }
+
         }
 
         public virtual string MakeNoise()
@@ -36,10 +52,11 @@ namespace ZooKeeper
             return noise; 
         }
 
-        public static void Poop()
+        public static void Poop(Animals animal)
         {
             //This should write out to the console that the animal has pooped.
-            //For ex: "The dolphin pooped!”
+
+            Console.WriteLine($"\r\nThe {animal.Species} has pooped!");
         }
 
 

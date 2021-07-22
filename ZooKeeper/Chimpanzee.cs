@@ -8,13 +8,15 @@ namespace ZooKeeper
 
         public Dictionary<string, string> Behavior { get; set; }
 
-        public Chimpanzee(string species, string treat) : base (species, treat)
+        public Chimpanzee(string species, string treat) : base(species, treat)
         {
+
+            Console.WriteLine($"{Species} {treat}");
         }
 
         public string Perform(string signal)
         {
-            string placeHolder = "";
+            string placeHolder = "" ;
 
             return placeHolder; 
         }
@@ -28,28 +30,15 @@ namespace ZooKeeper
 
         }
 
-        public static void Eat()
-        {
-            //If animal eats more than for time trigger Poop()
-
-            //It should return a string describing how the animal ate the
-            //food that looks like this: "The dolphin ate a herring”
-        }
-
         public override string MakeNoise()
         {
             //String to hold sound
-            string noise = "moo";
-
+            string noise = "Hoo Hoo Haa Haa";
 
             //Return the sound 
             return noise;
         }
 
-        public static void Poop()
-        {
-            //This should write out to the console that the animal has pooped.
-            //For ex: "The dolphin pooped!”
-        }
+
     }
 }

@@ -51,28 +51,21 @@ namespace ZooKeeper
                     int userActionChoice = Validation.MenuSelectionValidation(Console.ReadLine(), selectedAnimalList.Count); 
 
 
-                    switch (userActionChoice)
+                    switch (userActionChoice )
                     {
                         case 1:
+
                             //Train
-                            if (animalList[animalSelection].isTrainable == false)
-                            {
-                                Console.WriteLine("\r\nSorry, this is not a trainable animal");
-                                Console.WriteLine("Please select another animal");
-                            } else
-                            {
-                                Console.Write("What behavior are you training the animal to do");
-                                string animalBehavior = Validation.StringValidation(Console.ReadLine());
+                            
 
-                                
-
-                            }
-
-                           
                             break;
                         case 2:
-                            //Feed
 
+                            //Feed
+                            Animals.Eat(animalList[animalSelection - 1]); 
+                            
+
+                                
                             break;
                         case 3:
                             //Signal to preform 
@@ -80,11 +73,19 @@ namespace ZooKeeper
                             break;
                         case 4:
                             //Listen
+                            string animalNoise  = animalList[animalSelection - 1].MakeNoise();
+
+                            Console.WriteLine($"The {(animalList[animalSelection - 1]).Species} goes {animalNoise}");
 
                             break;
                         case 5:
                             //Select Different animal 
                                                     
+                            break;
+
+                        case 6:
+                            //Exit the program
+
                             break;
                     }
                 }
@@ -105,12 +106,12 @@ namespace ZooKeeper
             menuList.Add("Tiger (Trainable)");
             menuList.Add("Camel");
 
-            Chimpanzee chimpanzee = new Chimpanzee("Chimpanzee", "Banana", true);
-            Crocodile crocodile = new Crocodile("Crocodile", "Turkey", false);
-            Dolphin dolphin = new Dolphin("Dolphin", "Fish", true);
-            Condor condor = new Condor("Condor", "Rat", false);
-            Tiger tiger = new Tiger("Tiger", "Chicken", true);
-            Camel camel = new Camel("Camel", "grains", false);
+            Chimpanzee chimpanzee = new Chimpanzee("Chimpanzee", "Banana");
+            Crocodile crocodile = new Crocodile("Crocodile", "Turkey");
+            Dolphin dolphin = new Dolphin("Dolphin", "Fish");
+            Condor condor = new Condor("Condor", "Rat");
+            Tiger tiger = new Tiger("Tiger", "Chicken");
+            Camel camel = new Camel("Camel", "grains");
 
             animalList.Add(chimpanzee);
             animalList.Add(crocodile);
