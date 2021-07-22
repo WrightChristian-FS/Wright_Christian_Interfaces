@@ -45,25 +45,46 @@ namespace ZooKeeper
                     Menu.Init(animalList[animalSelection - 1].Species, selectedAnimalList);
                     Menu.Display();
 
-                    switch (animalSelection)
+                    Console.Write("Please select an action:");
+
+                    UI.InputUI();
+                    int userActionChoice = Validation.MenuSelectionValidation(Console.ReadLine(), selectedAnimalList.Count); 
+
+
+                    switch (userActionChoice)
                     {
                         case 1:
+                            //Train
+                            if (animalList[animalSelection].isTrainable == false)
+                            {
+                                Console.WriteLine("\r\nSorry, this is not a trainable animal");
+                                Console.WriteLine("Please select another animal");
+                            } else
+                            {
+                                Console.Write("What behavior are you training the animal to do");
+                                string animalBehavior = Validation.StringValidation(Console.ReadLine());
+
+                                
+
+                            }
+
                            
                             break;
                         case 2:
+                            //Feed
 
                             break;
                         case 3:
+                            //Signal to preform 
 
                             break;
                         case 4:
+                            //Listen
 
                             break;
                         case 5:
-
-                            break;
-                        case 6:
-
+                            //Select Different animal 
+                                                    
                             break;
                     }
                 }
@@ -84,12 +105,12 @@ namespace ZooKeeper
             menuList.Add("Tiger (Trainable)");
             menuList.Add("Camel");
 
-            Chimpanzee chimpanzee = new Chimpanzee("Chimpanzee", "Banana");
-            Crocodile crocodile = new Crocodile("Crocodile", "Turkey");
-            Dolphin dolphin = new Dolphin("Dolphin", "Fish");
-            Condor condor = new Condor("Condor", "Rat");
-            Tiger tiger = new Tiger("Tiger", "Chicken");
-            Camel camel = new Camel("Camel", "grains");
+            Chimpanzee chimpanzee = new Chimpanzee("Chimpanzee", "Banana", true);
+            Crocodile crocodile = new Crocodile("Crocodile", "Turkey", false);
+            Dolphin dolphin = new Dolphin("Dolphin", "Fish", true);
+            Condor condor = new Condor("Condor", "Rat", false);
+            Tiger tiger = new Tiger("Tiger", "Chicken", true);
+            Camel camel = new Camel("Camel", "grains", false);
 
             animalList.Add(chimpanzee);
             animalList.Add(crocodile);
