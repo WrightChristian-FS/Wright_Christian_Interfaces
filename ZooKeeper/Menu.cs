@@ -17,12 +17,12 @@ namespace ZooKeeper
 
         public static void Display()
         {
-
+            Console.Clear(); 
             //Header
             UI.HeaderUI();
-            Console.WriteLine("====================");
+            Console.WriteLine("==========================");
             Console.WriteLine($"   {_title}");
-            Console.WriteLine("====================\r\n");
+            Console.WriteLine("==========================\r\n");
             UI.StandardUI();
 
             //Print the menu options 
@@ -30,6 +30,9 @@ namespace ZooKeeper
             {
                 Console.WriteLine($"{_menuItems.IndexOf(item) + 1}: {item}");
             }
+
+            Console.WriteLine($"{_menuItems.Count + 1}: Exit Program");
+
         }
     }
    

@@ -6,7 +6,7 @@ namespace ZooKeeper
     {
         static void Main(string[] args)
         {
-            App app = new App(); 
+            App application = new App(); 
         }
     }
 }
