@@ -56,28 +56,35 @@ namespace ZooKeeper
                         case 1:
 
                             //Train
-                            
+                            if (animalList[animalSelection - 1] is ITrainable)
+                            {
+                                Console.WriteLine("Trainable");
+                            } else
+                            {
+                                Console.WriteLine("Not a trainable animal!");
+                            }
+
 
                             break;
+
                         case 2:
 
-                            //Feed
-                            Animals.Eat(animalList[animalSelection - 1]); 
-                            
-
-                                
+                            //Feed the animal 
+                            Animals.Eat(animalList[animalSelection - 1]);    
                             break;
+
                         case 3:
                             //Signal to preform 
 
                             break;
+
                         case 4:
-                            //Listen
+
+                            //Grab the animal noise and print to the console 
                             string animalNoise  = animalList[animalSelection - 1].MakeNoise();
-
-                            Console.WriteLine($"The {(animalList[animalSelection - 1]).Species} goes {animalNoise}");
-
+                            Console.WriteLine($"\r\nThe {(animalList[animalSelection - 1]).Species} goes {animalNoise}");
                             break;
+
                         case 5:
                             //Select Different animal 
                                                     
