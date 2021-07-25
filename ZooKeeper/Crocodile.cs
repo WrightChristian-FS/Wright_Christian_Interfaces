@@ -10,7 +10,7 @@ namespace ZooKeeper
         public override string MakeNoise()
         {
             //String to hold sound
-            string noise = "moo";
+            string noise = "Snap Snawl Growl Snap!";
 
 
             //Return the sound 

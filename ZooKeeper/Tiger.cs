@@ -22,11 +22,13 @@ namespace ZooKeeper
 
         public string Train(string signal, string behavoir)
         {
+            //Add the behavior the behavior dictionary 
+            Behavior.Add(signal, behavoir);
 
-            string placeHolder = "";
 
-            return placeHolder;
-
+            //Create a string to hold the response and return to the user
+            string newBehavior = $"The tiger will {behavoir} when you {signal}";
+            return newBehavior;
         }
 
         public override string MakeNoise()

@@ -32,7 +32,12 @@ namespace ZooKeeper
                 Console.Write("\r\nPlease enter your selection: ");
                 UI.InputUI();
                 int animalSelection = Validation.MenuSelectionValidation(Console.ReadLine(), menuList.Count);
-                UI.StandardUI(); 
+                UI.StandardUI();
+
+                //Hold the variable in an Animals variable for later use
+                Animals selectedAnimal = animalList[animalSelection - 1];
+
+                
                 //Handle the user selection 
                 if(animalSelection == (menuList.Count + 1))
                 {
@@ -42,13 +47,14 @@ namespace ZooKeeper
                 {
                     //Enter a switch case that will change based on the animal selection
 
-                    Menu.Init(animalList[animalSelection - 1].Species, selectedAnimalList);
+                    Menu.Init(selectedAnimal.Species, selectedAnimalList);
                     Menu.Display();
 
-                    Console.Write("Please select an action:");
+                    Console.Write("Please select an action: ");
 
                     UI.InputUI();
-                    int userActionChoice = Validation.MenuSelectionValidation(Console.ReadLine(), selectedAnimalList.Count); 
+                    int userActionChoice = Validation.MenuSelectionValidation(Console.ReadLine(), selectedAnimalList.Count);
+                    UI.StandardUI();
 
 
                     switch (userActionChoice )
@@ -56,12 +62,65 @@ namespace ZooKeeper
                         case 1:
 
                             //Train
-                            if (animalList[animalSelection - 1] is ITrainable)
+                            if (selectedAnimal is ITrainable)
                             {
-                                Console.WriteLine("Trainable");
+
+                                //Clear the console 
+                                Console.Clear();
+
+                                //Print the menu header
+                                UI.HeaderUI();
+                                Console.WriteLine("==========================");
+                                Console.WriteLine($"   Train the {animalList[animalSelection - 1].Species}");
+                                Console.WriteLine("==========================\r\n");
+                                UI.StandardUI();
+
+
+                                //Ask the user what the behaivor they would like the animal to do?
+                                Console.Write($"What new behavior are you training the {animalList[animalSelection -1].Species} to do: ");
+                                UI.InputUI();
+                                string newTrick = Validation.StringValidation(Console.ReadLine());
+                                UI.StandardUI();
+
+                                //Ask the user what signial they will use?
+                                Console.Write($"What signial will you use for the {animalList[animalSelection - 1].Species} to {newTrick}: ");
+                                UI.InputUI();
+                                string trickSignal = Validation.StringValidation(Console.ReadLine());
+                                UI.StandardUI();
+
+                  
+                                //Handle the train method based on species type
+                                if (selectedAnimal.Species == "Chimpanzee")
+                                {
+                                    ////Send the information to the train function 
+                                    Chimpanzee confirmTrick = (Chimpanzee)animalList[animalSelection - 1];
+                                    string printTrick = confirmTrick.Train(trickSignal, newTrick);
+                                    Console.WriteLine(printTrick);
+
+                                }
+                                else if (selectedAnimal.Species == "Dolphin")
+                                {
+                                    //Send the information to the train function 
+                                    Dolphin confirmTrick = (Dolphin)animalList[animalSelection - 1];
+                                    string printTrick = confirmTrick.Train(trickSignal, newTrick);
+                                    Console.WriteLine(printTrick);
+
+
+                                }
+                                else if (selectedAnimal.Species == "Tiger")
+                                {
+                                    //Send the information to the train function 
+                                    Tiger confirmTrick = (Tiger)animalList[animalSelection - 1];
+                                    string printTrick = confirmTrick.Train(trickSignal, newTrick);
+                                    Console.WriteLine(printTrick);
+
+
+                                }
+
+
                             } else
                             {
-                                Console.WriteLine("Not a trainable animal!");
+                                Console.WriteLine($"\r\n{animalList[animalSelection -1].Species} is not a trainable animal! ");
                             }
 
 
@@ -74,7 +133,15 @@ namespace ZooKeeper
                             break;
 
                         case 3:
-                            //Signal to preform 
+                            //Signal to preform
+                            if (animalList[animalSelection - 1] is ITrainable)
+                            {
+                                Console.WriteLine("\r\nPerformed a trick!");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"\r\n{animalList[animalSelection - 1].Species} can not perform because it is not a trainable animal!");
+                            }
 
                             break;
 

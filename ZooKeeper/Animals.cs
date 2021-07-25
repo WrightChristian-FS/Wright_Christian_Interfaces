@@ -59,6 +59,6 @@ namespace ZooKeeper
             Console.WriteLine($"\r\nThe {animal.Species} has pooped!");
         }
 
-
+       
     }
 }
