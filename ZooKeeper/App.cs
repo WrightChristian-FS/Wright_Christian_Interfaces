@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ * Christian Wright 
+ * 26JUL2021 
+ * APA ZooKeeper Application
+ * 
+ */
+
+using System;
 using System.Collections.Generic;
 
 namespace ZooKeeper
@@ -92,7 +99,7 @@ namespace ZooKeeper
                                 //Handle the train method based on species type
                                 if (selectedAnimal.Species == "Chimpanzee")
                                 {
-                                    ////Send the information to the train function 
+                                    ////Send the information to the train function and print the returned string
                                     Chimpanzee confirmTrick = (Chimpanzee)animalList[animalSelection - 1];
                                     string printTrick = confirmTrick.Train(trickSignal, newTrick);
                                     Console.WriteLine(printTrick);
@@ -100,7 +107,7 @@ namespace ZooKeeper
                                 }
                                 else if (selectedAnimal.Species == "Dolphin")
                                 {
-                                    //Send the information to the train function 
+                                    ////Send the information to the train function and print the returned string
                                     Dolphin confirmTrick = (Dolphin)animalList[animalSelection - 1];
                                     string printTrick = confirmTrick.Train(trickSignal, newTrick);
                                     Console.WriteLine(printTrick);
@@ -109,12 +116,10 @@ namespace ZooKeeper
                                 }
                                 else if (selectedAnimal.Species == "Tiger")
                                 {
-                                    //Send the information to the train function 
+                                    ////Send the information to the train function and print the returned string
                                     Tiger confirmTrick = (Tiger)animalList[animalSelection - 1];
                                     string printTrick = confirmTrick.Train(trickSignal, newTrick);
                                     Console.WriteLine(printTrick);
-
-
                                 }
 
 
@@ -133,17 +138,172 @@ namespace ZooKeeper
                             break;
 
                         case 3:
-                            //Signal to preform
-                            if (animalList[animalSelection - 1] is ITrainable)
-                            {
-                                Console.WriteLine("\r\nPerformed a trick!");
-                            }
-                            else
-                            {
-                                Console.WriteLine($"\r\n{animalList[animalSelection - 1].Species} can not perform because it is not a trainable animal!");
-                            }
 
-                            break;
+                            //Perform
+
+                            //Handle the train method based on species type
+                            if (selectedAnimal.Species == "Chimpanzee")
+                            {
+
+                                Console.Clear();
+                                //Header
+                                UI.HeaderUI();
+                                Console.WriteLine("==========================");
+                                Console.WriteLine($"   CHIMPANZEE");
+                                Console.WriteLine("==========================\r\n");
+                                UI.StandardUI();
+
+                                ////Send the information to the train function and print the returned string
+                                Chimpanzee chimp = (Chimpanzee)animalList[animalSelection - 1];
+
+                                //Variable to hold the local compare list 
+                                Dictionary<string, string> compareList = chimp.Behavior;
+
+
+                                //Check to see if there is any behaviors that have been tought already
+                                if (compareList.Count == 0)
+                                {
+
+                                    //No behaviors in the list, print an error 
+                                    Console.WriteLine("\r\nYou have not trained the chimpanzee any tricks. Teach them a trick to perform");
+                                }
+                                else
+                                {
+                                    //Print the list of tricks they have trained 
+                                    UI.InputUI();
+                                    Console.WriteLine($"{"SIGNAL",-10} {"TRICK",-10}\r\n");
+                                    UI.StandardUI();
+
+                                    //Print the 
+                                    foreach (KeyValuePair<string, string> trick in compareList)
+                                    {
+                                        Console.WriteLine($"{trick.Key,-10} {trick.Value}");
+                                    }
+
+                                    //Ask the user for 
+                                    Console.Write("\r\nSignal a trick you taught the chimpanzee: ");
+                                    UI.InputUI();
+                                    string requestedTrick = Validation.StringValidation(Console.ReadLine());
+                                    UI.StandardUI();
+
+                                    string confirmTrick = chimp.Perform(requestedTrick);
+
+
+                                    Console.WriteLine(confirmTrick);
+                                }
+
+
+                            }
+                            else if (selectedAnimal.Species == "Dolphin")
+                            {
+
+                                        Console.Clear();
+                                        //Header
+                                        UI.HeaderUI();
+                                        Console.WriteLine("==========================");
+                                        Console.WriteLine($"   DOLPHIN");
+                                        Console.WriteLine("==========================\r\n");
+                                        UI.StandardUI();
+
+                                        ////Send the information to the train function and print the returned string
+                                        Dolphin dolphin = (Dolphin)animalList[animalSelection - 1];
+
+                                        //Variable to hold the local compare list 
+                                        Dictionary<string, string> compareList = dolphin.Behavior;
+
+
+                                        //Check to see if there is any behaviors that have been tought already
+                                        if (compareList.Count == 0)
+                                        {
+
+                                            //No behaviors in the list, print an error 
+                                            Console.WriteLine("\r\nYou have not trained the chimpanzee any tricks. Teach them a trick to perform");
+                                        }
+                                        else
+                                        {
+                                            //Print the list of tricks they have trained 
+                                            UI.InputUI();
+                                            Console.WriteLine($"{"SIGNAL",-10} {"TRICK",-10}\r\n");
+                                            UI.StandardUI();
+
+                                            //Print the 
+                                            foreach (KeyValuePair<string, string> trick in compareList)
+                                            {
+                                                Console.WriteLine($"{trick.Key,-10} {trick.Value}");
+                                            }
+
+                                            //Ask the user for 
+                                            Console.Write("\r\nSignal a trick you taught the chimpanzee: ");
+                                            UI.InputUI();
+                                            string requestedTrick = Validation.StringValidation(Console.ReadLine());
+                                            UI.StandardUI();
+
+                                            string confirmTrick = dolphin.Perform(requestedTrick);
+
+
+                                            Console.WriteLine(confirmTrick);
+                                        }
+
+
+                                }
+                                else if (selectedAnimal.Species == "Tiger")
+                                {
+                                
+                                        Console.Clear();
+                                        //Header
+                                        UI.HeaderUI();
+                                        Console.WriteLine("==========================");
+                                        Console.WriteLine($"   TIGER");
+                                        Console.WriteLine("==========================\r\n");
+                                        UI.StandardUI();
+
+                                        ////Send the information to the train function and print the returned string
+                                        Tiger tiger = (Tiger)animalList[animalSelection - 1];
+
+                                        //Variable to hold the local compare list 
+                                        Dictionary<string, string> compareList = tiger.Behavior;
+
+
+                                        //Check to see if there is any behaviors that have been tought already
+                                        if (compareList.Count == 0)
+                                        {
+
+                                            //No behaviors in the list, print an error 
+                                            Console.WriteLine("\r\nYou have not trained the chimpanzee any tricks. Teach them a trick to perform");
+                                        }
+                                        else
+                                        {
+                                            //Print the list of tricks they have trained 
+                                            UI.InputUI();
+                                            Console.WriteLine($"{"SIGNAL",-10} {"TRICK",-10}\r\n");
+                                            UI.StandardUI();
+
+                                            //Print the 
+                                            foreach (KeyValuePair<string, string> trick in compareList)
+                                            {
+                                                Console.WriteLine($"{trick.Key,-10} {trick.Value}");
+                                            }
+
+                                            //Ask the user for 
+                                            Console.Write("\r\nSignal a trick you taught the chimpanzee: ");
+                                            UI.InputUI();
+                                            string requestedTrick = Validation.StringValidation(Console.ReadLine());
+                                            UI.StandardUI();
+
+                                            string confirmTrick = tiger.Perform(requestedTrick);
+
+
+                                            Console.WriteLine(confirmTrick);
+                                        }
+
+                                
+                                } else
+                            {
+                                Console.WriteLine("\r\nSorry the animal is not trainable and has no tricks!");
+                            }
+                            
+
+                            break; 
 
                         case 4:
 
@@ -164,6 +324,7 @@ namespace ZooKeeper
                     }
                 }
 
+                
                 Continue();
 
             }

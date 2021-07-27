@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ * Christian Wright 
+ * 26JUL2021 
+ * APA ZooKeeper Application
+ * 
+ */
+
+using System;
 namespace ZooKeeper
 {
     public class Animals
